@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Caixinha de caneca",
+    "path": "/models/base_mug_box.glb",
+    "description": "Caixinha para caneca 325ml.",
+    "areas": ["FRONT", "BACK", "LEFT", "RIGHT", "TOP", "BOTTOM"]
+  },
+  {
+    "id": "2",
+    "name": "Caneca 325ml",
+    "path": "/models/mug_325.glb",
+    "description": "Caneca 325ml.",
+    "areas": ["EXTERNAL", "INTERNAL"]
+  },
+  {
+    "id": "3",
+    "name": "Caixinha com animação",
+    "path": "/models/base_mug_box_animated.glb",
+    "description": "Caixinha com animação.",
+    "areas": ["FRONT", "BACK", "LEFT", "RIGHT", "TOP", "BOTTOM"]
+  }
+]
