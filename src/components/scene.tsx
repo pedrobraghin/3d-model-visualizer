@@ -4,11 +4,11 @@ import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 export function Scene() {
   return (
     <>
-      <color attach="background" args={['#f4f4f4']} />
+      <color attach="background" args={['#000']} />
 
       <ambientLight intensity={1} />
 
-      <directionalLight position={[5, 8, 5]} intensity={0.5} castShadow />
+      <directionalLight position={[5, 8, 5]} intensity={0.2} castShadow />
 
       <directionalLight position={[-3, 2, -2]} intensity={0.15} castShadow />
 
@@ -24,10 +24,10 @@ export function Scene() {
 
       <OrbitControls
         enableDamping
-        dampingFactor={0.08}
+        dampingFactor={0.2}
         autoRotate
         autoRotateSpeed={1}
-        target={[0, 0, 0]}
+        target={[0, -1, 0]}
       />
 
       <EffectComposer>

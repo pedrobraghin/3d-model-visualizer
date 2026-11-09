@@ -1,11 +1,30 @@
 import { useCallback, useState } from 'react';
 import { ModelViewer, Scene, Sidebar } from './components';
+
+import presets from './data/presets.json';
 import models from './data/models.json';
+
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
+import type { TextureTransform, TextureTransforms } from './@types';
 
 function App() {
-  const [selectedModel, setSelectedModel] = useState(models[0]);
+  const [textureTransforms, setTextureTransforms] = useState<TextureTransforms>(
+    {},
+  );
+
+  const [uiHidden, setUiHidden] = useState(false);
+  const [selectedPreset, setSelectedPreset] = useState(presets[0]);
+  const selectedModels = selectedPreset.referenceModels
+    .map((reference) => {
+      const model = models.find((m) => m.id === reference.modelId)!;
+
+      return {
+        ...reference,
+        model,
+      };
+    })
+    .filter(Boolean);
 
   const [texturesByArea, setTexturesByArea] = useState<Record<string, string>>(
     {},
@@ -32,6 +51,31 @@ function App() {
     }));
   }, []);
 
+  const updateTextureTransform = useCallback(
+    (area: string, changes: Partial<TextureTransform>) => {
+      setTextureTransforms((prev) => ({
+        ...prev,
+        [area]: {
+          ...prev[area],
+          ...changes,
+        },
+      }));
+    },
+    [],
+  );
+
+  const resetTextureTransform = useCallback((area: string) => {
+    setTextureTransforms((prev) => ({
+      ...prev,
+      [area]: {
+        rotation: 0,
+        offsetX: 0,
+        offsetY: 0,
+        zoom: 1,
+      },
+    }));
+  }, []);
+
   return (
     <div className="w-screen h-screen bg-[#f0f0f0]">
       <header className="px-5 w-full py-3 bg-black/95 text-white">
@@ -43,13 +87,26 @@ function App() {
       </header>
       <div className="flex gap-10 h-[calc(100vh-94px)]">
         <Sidebar
-          selectedModel={selectedModel}
-          setSelectedModel={setSelectedModel}
+          selectedPreset={selectedPreset}
+          setSelectedPreset={setSelectedPreset}
           texturesByArea={texturesByArea}
           handleUpload={handleUpload}
+          selectedModels={selectedModels}
+          textureTransforms={textureTransforms}
+          updateTextureTransform={updateTextureTransform}
+          resetTextureTransform={resetTextureTransform}
         />
 
-        <main className="flex-1 ">
+        <div className="fixed top-3 right-3 z-10">
+          <button
+            onClick={() => setUiHidden(!uiHidden)}
+            className="bg-black/95 text-white px-4 py-2 rounded-md hover:bg-black/80 transition-colors"
+          >
+            {uiHidden ? 'Show UI' : 'Hide UI'}
+          </button>
+        </div>
+
+        <main className="flex-1 min-w-0">
           <Canvas
             shadows
             gl={{
@@ -65,10 +122,17 @@ function App() {
           >
             <Scene />
 
-            <ModelViewer
-              model={selectedModel}
-              texturesByArea={texturesByArea}
-            />
+            {selectedModels.map((item, index) => (
+              <ModelViewer
+                key={`${item.model.id}-${index}`}
+                model={item.model}
+                texturesByArea={texturesByArea}
+                textureTransforms={textureTransforms}
+                position={item.position}
+                rotation={item.rotation}
+                scale={item.scale}
+              />
+            ))}
           </Canvas>
         </main>
       </div>

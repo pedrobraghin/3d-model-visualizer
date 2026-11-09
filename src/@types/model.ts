@@ -4,4 +4,5 @@ export type Model = {
   description: string;
   path: string;
   areas: string[];
+  animated?: boolean;
 };

@@ -1,0 +1,60 @@
+[
+  {
+    "id": "P1",
+    "name": "Caixinha e caneca",
+    "description": "Preset com a caixinha animada e a caneca 325ml.",
+    "referenceModels": [
+      {
+        "modelId": "2",
+        "position": [-1.5, 5, 2],
+        "rotation": [0, 0.5, 0],
+        "scale": 2.5
+      },
+      {
+        "modelId": "3",
+        "position": [0, 0, 0],
+        "rotation": [0, 0, 0],
+        "scale": 1.5
+      }
+    ]
+  },
+  {
+    "id": "P2",
+    "name": "Caixinha animada",
+    "description": "Preset com a caixinha animada.",
+    "referenceModels": [
+      {
+        "modelId": "3",
+        "position": [0, -1, 0],
+        "rotation": [0, 0, 0],
+        "scale": 1.5
+      }
+    ]
+  },
+  {
+    "id": "P3",
+    "name": "Caneca 325ml",
+    "description": "Preset com a caneca 325ml.",
+    "referenceModels": [
+      {
+        "modelId": "2",
+        "position": [0, -1, 0],
+        "rotation": [0, 0, 0],
+        "scale": 1.5
+      }
+    ]
+  },
+  {
+    "id": "P4",
+    "name": "Caneca 325ml Com fundo",
+    "description": "Preset com a caneca 325ml com fundo.",
+    "referenceModels": [
+      {
+        "modelId": "4",
+        "position": [0, -1, 0],
+        "rotation": [0, 0, 0],
+        "scale": 1.5
+      }
+    ]
+  }
+]

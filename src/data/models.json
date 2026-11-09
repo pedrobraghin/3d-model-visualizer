@@ -11,13 +11,21 @@
     "name": "Caneca 325ml",
     "path": "/models/mug_325.glb",
     "description": "Caneca 325ml.",
-    "areas": ["EXTERNAL", "INTERNAL"]
+    "areas": ["EXTERNAL", "INTERNAL", "BOTTOM"]
   },
   {
     "id": "3",
     "name": "Caixinha com animação",
     "path": "/models/base_mug_box_animated.glb",
     "description": "Caixinha com animação.",
-    "areas": ["FRONT", "BACK", "LEFT", "RIGHT", "TOP", "BOTTOM"]
+    "areas": ["FRONT", "BACK", "LEFT", "RIGHT", "TOP", "BOTTOM"],
+    "animated": true
+  },
+  {
+    "id": "4",
+    "name": "Caneca 325ml com fundo",
+    "path": "/models/mug_325_updated.glb",
+    "description": "Caneca 325ml com fundo.",
+    "areas": ["EXTERNAL", "BOTTOM"]
   }
 ]
