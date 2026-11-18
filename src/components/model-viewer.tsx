@@ -8,6 +8,7 @@ interface Props {
   position?: number[];
   rotation?: number[];
   scale?: number;
+  colorsByArea?: Record<string, string>;
 }
 
 export function ModelViewer({
@@ -17,10 +18,12 @@ export function ModelViewer({
   position,
   rotation,
   scale,
+  colorsByArea = {},
 }: Readonly<Props>) {
   return (
     <group>
       <GLBModel
+        colorsByArea={colorsByArea}
         modelUrl={model.path}
         texturesByArea={texturesByArea}
         textureTransforms={textureTransforms}

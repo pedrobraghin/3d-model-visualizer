@@ -23,6 +23,8 @@ interface Props {
   ) => void;
   resetTextureTransform: (area: string) => void;
   isHidden?: boolean;
+  colorsByArea: Record<string, string>;
+  handleColorChange: (area: string, color: string) => void;
   selectedModels: {
     model: Model;
     position: number[];
@@ -41,6 +43,8 @@ export function Sidebar({
   updateTextureTransform,
   resetTextureTransform,
   selectedModels,
+  colorsByArea,
+  handleColorChange,
 }: Readonly<Props>) {
   const areas = [
     ...new Set(selectedModels.flatMap((item) => item.model.areas)),
@@ -96,6 +100,8 @@ export function Sidebar({
               area={area}
               preview={texturesByArea[area]}
               handleUpload={handleUpload}
+              color={colorsByArea[area] ?? '#ffffff'}
+              handleColorChange={handleColorChange}
             />
           ))}
         </div>

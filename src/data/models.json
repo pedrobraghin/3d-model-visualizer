@@ -11,7 +11,7 @@
     "name": "Caneca 325ml",
     "path": "/models/mug_325.glb",
     "description": "Caneca 325ml.",
-    "areas": ["EXTERNAL", "INTERNAL", "BOTTOM"]
+    "areas": ["EXTERNAL", "INTERNAL", "BOTTOM", "HANDLE", "HANDLE_HOLDER"]
   },
   {
     "id": "3",

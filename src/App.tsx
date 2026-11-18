@@ -13,6 +13,15 @@ function App() {
     {},
   );
 
+  const [colorsByArea, setColorsByArea] = useState<Record<string, string>>({});
+
+  const handleColorChange = useCallback((area: string, color: string) => {
+    setColorsByArea((prev) => ({
+      ...prev,
+      [area]: color,
+    }));
+  }, []);
+
   const [uiHidden, setUiHidden] = useState(false);
   const [selectedPreset, setSelectedPreset] = useState(presets[0]);
   const selectedModels = selectedPreset.referenceModels
@@ -95,6 +104,9 @@ function App() {
           textureTransforms={textureTransforms}
           updateTextureTransform={updateTextureTransform}
           resetTextureTransform={resetTextureTransform}
+          colorsByArea={colorsByArea}
+          handleColorChange={handleColorChange}
+          isHidden={uiHidden}
         />
 
         <div className="fixed top-3 right-3 z-10">
@@ -128,6 +140,7 @@ function App() {
                 model={item.model}
                 texturesByArea={texturesByArea}
                 textureTransforms={textureTransforms}
+                colorsByArea={colorsByArea}
                 position={item.position}
                 rotation={item.rotation}
                 scale={item.scale}
