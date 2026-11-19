@@ -34,5 +34,12 @@
     "path": "/models/mug_180.glb",
     "description": "Xícara 180ml da marca DEKO.",
     "areas": ["EXTERNAL"]
+  },
+  {
+    "id": "6",
+    "name": "Squeeze 750ml",
+    "path": "/models/squeeze_750.glb",
+    "description": "Squeeze 750ml.",
+    "areas": ["EXTERNAL", "SQUEEZE", "EDGES", "CAP"]
   }
 ]

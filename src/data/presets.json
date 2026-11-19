@@ -6,7 +6,7 @@
     "referenceModels": [
       {
         "modelId": "2",
-        "position": [-1.5, 5, 2],
+        "position": [-1.5, 8, 1],
         "rotation": [0, 0.5, 0],
         "scale": 2.5
       },
@@ -64,6 +64,19 @@
     "referenceModels": [
       {
         "modelId": "5",
+        "position": [0, -1, 0],
+        "rotation": [0, 0, 0],
+        "scale": 1.5
+      }
+    ]
+  },
+  {
+    "id": "P6",
+    "name": "Squeeze 750ml",
+    "description": "Preset com o squeeze 750ml.",
+    "referenceModels": [
+      {
+        "modelId": "6",
         "position": [0, -1, 0],
         "rotation": [0, 0, 0],
         "scale": 1.5

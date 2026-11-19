@@ -46,9 +46,9 @@ export function Sidebar({
   colorsByArea,
   handleColorChange,
 }: Readonly<Props>) {
-  const areas = [
-    ...new Set(selectedModels.flatMap((item) => item.model.areas)),
-  ];
+  const models = selectedModels.flatMap((item) => item.model);
+
+  const areas = [...new Set(models.map((model) => model.areas).flat())];
 
   const [selectedArea, setSelectedArea] = useState('');
 
@@ -72,9 +72,9 @@ export function Sidebar({
   };
 
   return (
-    <aside className="w-80 shrink-0 py-5 px-5 flex flex-col gap-6 overflow-auto">
+    <aside className="max-w-80 w-full shrink-0 py-4 pl-4 flex flex-col gap-6 overflow-auto">
       {/* PRESETS */}
-      <section>
+      <section className="flex flex-col gap-2">
         <h2 className="font-semibold mb-3">Presets</h2>
 
         <div className="flex flex-col gap-4 pb-4">
@@ -90,7 +90,7 @@ export function Sidebar({
       </section>
 
       {/* ÁREAS */}
-      <section>
+      <section className="fixed top-0 right-0 z-50 max-h-screen overflow-auto">
         <h2 className="font-semibold mb-3">Áreas personalizáveis</h2>
 
         <div className="flex flex-col gap-4 p-4 border-b border-black/65">
@@ -229,13 +229,6 @@ export function Sidebar({
             </button>
           </>
         )}
-      </section>
-
-      {/* AJUDA */}
-      <section className="text-sm leading-relaxed space-y-2 pt-4 border-t border-neutral-800">
-        <p>• Arraste para rotacionar o modelo</p>
-        <p>• Scroll para zoom da câmera</p>
-        <p>• Botão direito move a câmera</p>
       </section>
     </aside>
   );

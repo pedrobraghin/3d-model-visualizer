@@ -87,14 +87,27 @@ function App() {
 
   return (
     <div className="w-screen h-screen bg-[#f0f0f0]">
-      <header className="px-5 w-full py-3 bg-black/95 text-white">
-        <h1 className="text-2xl font-bold mb-1 h-10">Mockup Viewer</h1>
+      <header className="px-5 w-full py-3 bg-black/95 text-white flex flex-col gap-3">
+        <div className="flex gap-2 items-center">
+          <h1 className="text-2xl font-bold mb-1 h-10 border-r-2 border-white pr-4">
+            Visualizador 3D Naipe
+          </h1>
 
-        <span className="text-sm text-neutral-200 leading-relaxed">
-          Visualizador 3D para aplicação de artes em modelos GLB.
-        </span>
+          <span className="text-sm text-neutral-200 leading-relaxed">
+            Visualizador 3D para aplicação de artes em modelos GLB.
+          </span>
+        </div>
+
+        <div>
+          <button
+            onClick={() => setUiHidden(!uiHidden)}
+            className="bg-black/95 text-white px-4 py-2 rounded-md hover:bg-black/80 transition-colors cursor-pointer border-solid border-white border-2"
+          >
+            {uiHidden ? 'Exibir interface' : 'Ocultar interface'}
+          </button>
+        </div>
       </header>
-      <div className="flex gap-10 h-[calc(100vh-94px)]">
+      <div className="flex gap-2 h-[calc(100vh-94px)]">
         <Sidebar
           selectedPreset={selectedPreset}
           setSelectedPreset={setSelectedPreset}
@@ -108,15 +121,6 @@ function App() {
           handleColorChange={handleColorChange}
           isHidden={uiHidden}
         />
-
-        <div className="fixed top-3 right-3 z-10">
-          <button
-            onClick={() => setUiHidden(!uiHidden)}
-            className="bg-black/95 text-white px-4 py-2 rounded-md hover:bg-black/80 transition-colors"
-          >
-            {uiHidden ? 'Show UI' : 'Hide UI'}
-          </button>
-        </div>
 
         <main className="flex-1 min-w-0">
           <Canvas
@@ -137,7 +141,8 @@ function App() {
             {selectedModels.map((item, index) => (
               <ModelViewer
                 key={`${item.model.id}-${index}`}
-                model={item.model}
+                path={item.model.path}
+                animated={item.model.animated}
                 texturesByArea={texturesByArea}
                 textureTransforms={textureTransforms}
                 colorsByArea={colorsByArea}

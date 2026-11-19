@@ -1,18 +1,20 @@
-import type { Model, TextureTransforms } from '../@types';
+import type { TextureTransforms } from '../@types';
 import { GLBModel } from './glb-model';
 
 interface Props {
-  model: Model;
   texturesByArea: Record<string, string>;
   textureTransforms: TextureTransforms;
   position?: number[];
   rotation?: number[];
   scale?: number;
   colorsByArea?: Record<string, string>;
+  path: string;
+  animated?: boolean;
 }
 
 export function ModelViewer({
-  model,
+  path,
+  animated = false,
   texturesByArea,
   textureTransforms,
   position,
@@ -24,10 +26,10 @@ export function ModelViewer({
     <group>
       <GLBModel
         colorsByArea={colorsByArea}
-        modelUrl={model.path}
+        modelUrl={path}
         texturesByArea={texturesByArea}
         textureTransforms={textureTransforms}
-        animated={model.animated}
+        animated={animated}
         position={position}
         rotation={rotation}
         scale={scale}
