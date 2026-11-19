@@ -56,5 +56,18 @@
         "scale": 1.5
       }
     ]
+  },
+  {
+    "id": "P5",
+    "name": "Xícara 180ml DEKO",
+    "description": "Preset com a xícara 180ml da marca DEKO.",
+    "referenceModels": [
+      {
+        "modelId": "5",
+        "position": [0, -1, 0],
+        "rotation": [0, 0, 0],
+        "scale": 1.5
+      }
+    ]
   }
 ]

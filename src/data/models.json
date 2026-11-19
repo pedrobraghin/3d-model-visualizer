@@ -27,5 +27,12 @@
     "path": "/models/mug_325_updated.glb",
     "description": "Caneca 325ml com fundo.",
     "areas": ["EXTERNAL", "BOTTOM"]
+  },
+  {
+    "id": "5",
+    "name": "Xícara 180ml DEKO",
+    "path": "/models/mug_180.glb",
+    "description": "Xícara 180ml da marca DEKO.",
+    "areas": ["EXTERNAL"]
   }
 ]
